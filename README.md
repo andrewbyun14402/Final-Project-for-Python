@@ -1,1 +1,2 @@
-# Shlithering Shnakes
+# Shlithering Shnakes Python Final Project
+
