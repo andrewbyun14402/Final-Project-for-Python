@@ -26,7 +26,7 @@ shnake.direction="stop"
 #Food 1
 food1 = turtle.Turtle()
 food1.speed(0)
-food1.shape("circle")
+food1.shape("square")
 food1.color("red")
 food1.penup()
 food1.goto(0,100)
@@ -83,6 +83,10 @@ wn.onkeypress(go_up, "w")
 wn.onkeypress(go_down, "s")
 wn.onkeypress(go_left, "a")
 wn.onkeypress(go_right, "d")
+
+#Score
+score=0
+high_score=0
 
 # Main game loop
 while True:
