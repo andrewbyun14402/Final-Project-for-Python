@@ -2,6 +2,9 @@
 #By Andrew Byun, Lang Li, Vraj Patel
 import turtle
 
+import time 
+
+import random
 #Screen
 wn=turtle.Screen()
 wn.title("Shlithering Shnakes")
