@@ -106,11 +106,11 @@ while True:
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
     # Check for a collision with the food
-    if head.distance(food) < 20:
+    if head.distance(food1) < 20:
         # Move the food to a random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
-        food.goto(x,y)
+        food1.goto(x,y)
 
         # Add a segment
         new_segment = turtle.Turtle()
