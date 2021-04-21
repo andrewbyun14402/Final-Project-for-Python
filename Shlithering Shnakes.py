@@ -40,37 +40,37 @@ pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "norma
 
 # Functions
 def go_up():
-    if head.direction != "down":
-        head.direction = "up"
+    if shnake.direction != "down":
+        shnake.direction = "up"
 
 def go_down():
-    if head.direction != "up":
-        head.direction = "down"
+    if shnake.direction != "up":
+        shnake.direction = "down"
 
 def go_left():
-    if head.direction != "right":
-        head.direction = "left"
+    if shnake.direction != "right":
+        shnake.direction = "left"
 
 def go_right():
-    if head.direction != "left":
-        head.direction = "right"
+    if shnake.direction != "left":
+        shnake.direction = "right"
 
 def move():
-    if head.direction == "up":
-        y = head.ycor()
-        head.sety(y + 20)
+    if shnake.direction == "up":
+        y = shnake.ycor()
+        shnake.sety(y + 20)
 
-    if head.direction == "down":
-        y = head.ycor()
-        head.sety(y - 20)
+    if shnake.direction == "down":
+        y = shnake.ycor()
+        shnake.sety(y - 20)
 
-    if head.direction == "left":
-        x = head.xcor()
-        head.setx(x - 20)
+    if shnake.direction == "left":
+        x = shnake.xcor()
+        shnake.setx(x - 20)
 
-    if head.direction == "right":
-        x = head.xcor()
-        head.setx(x + 20)
+    if shnake.direction == "right":
+        x = shnake.xcor()
+        shnake.setx(x + 20)
 
 # Keyboard bindings
 wn.listen()
@@ -84,10 +84,10 @@ while True:
     wn.update()
 
     # Check for a collision with the border
-    if head.xcor()>290 or head.xcor()<-290 or head.ycor()>290 or head.ycor()<-290:
+    if shnake.xcor()>290 or shnake.xcor()<-290 or shnake.ycor()>290 or shnake.ycor()<-290:
         time.sleep(1)
-        head.goto(0,0)
-        head.direction = "stop"
+        shnake.goto(0,0)
+        shnake.direction = "stop"
 
         # Hide the segments
         for segment in segments:
@@ -140,18 +140,18 @@ while True:
 
     # Move segment 0 to where the head is
     if len(segments) > 0:
-        x = head.xcor()
-        y = head.ycor()
+        x = shnake.xcor()
+        y = shnake.ycor()
         segments[0].goto(x,y)
 
     move()    
 
     # Check for head collision with the body segments
     for segment in segments:
-        if segment.distance(head) < 20:
+        if segment.distance(shnake) < 20:
             time.sleep(1)
-            head.goto(0,0)
-            head.direction = "stop"
+            shnake.goto(0,0)
+            shnake.direction = "stop"
         
             # Hide the segments
             for segment in segments:
