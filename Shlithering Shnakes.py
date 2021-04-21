@@ -5,6 +5,8 @@ import turtle
 import time 
 
 import random
+
+delay=0.1
 #Screen
 wn=turtle.Screen()
 wn.title("Shlithering Shnakes")
