@@ -24,12 +24,20 @@ shnake.goto(0,0)
 shnake.direction="stop"
 
 #Food 1
-food1 = turtle.Turtle()
+food1=turtle.Turtle()
 food1.speed(0)
 food1.shape("square")
 food1.color("red")
 food1.penup()
 food1.goto(0,100)
+
+#Food 2
+food2=turtle.Turtle()
+food2.speed(0)
+food2.shape("square")
+food2.color("blue")
+food2.penup()
+food2.goto(200,50)
 
 segments = []
 
@@ -114,13 +122,38 @@ while True:
         pen.clear()
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
-    # Check for a collision with the food
+    # Check for a collision with the food 1
     if shnake.distance(food1) < 20:
-        # Move the food to a random spot
+        # Move the food 1 to a random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
         food1.goto(x,y)
+     # Add a segment
+        new_segment = turtle.Turtle()
+        new_segment.speed(0)
+        new_segment.shape("square")
+        new_segment.color("grey")
+        new_segment.penup()
+        segments.append(new_segment)
 
+        # Shorten the delay
+        delay -= 0.001
+
+        # Increase the score
+        score += 10
+
+        if score > high_score:
+            high_score = score
+        
+        pen.clear()
+        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+    # Check for a collision with the food 2
+    if shnake.distance(food2) < 20:
+        # Move the food 2 to a random spot
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        food2.goto(x,y)
+        
         # Add a segment
         new_segment = turtle.Turtle()
         new_segment.speed(0)
@@ -155,7 +188,7 @@ while True:
 
     move()    
 
-    # Check for head collision with the body segments
+    # Check for shnake collision with the body segments
     for segment in segments:
         if segment.distance(shnake) < 20:
             time.sleep(1)
