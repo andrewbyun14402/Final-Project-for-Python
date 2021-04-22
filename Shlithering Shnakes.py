@@ -138,10 +138,10 @@ wn.onkeypress(go_left, "a")
 wn.onkeypress(go_right, "d")
 
 # Keyboard bindings for Shnake 2
-wn.onkeypress(go_up2, "i")
-wn.onkeypress(go_down2, "k")
-wn.onkeypress(go_left2, "j")
-wn.onkeypress(go_right2, "l")
+wn.onkeypress(go_up2, "Up")
+wn.onkeypress(go_down2, "Down")
+wn.onkeypress(go_left2, "Left")
+wn.onkeypress(go_right2, "Right")
 
 #Score
 Player1=0
