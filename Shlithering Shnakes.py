@@ -187,7 +187,7 @@ while True:
         segments2.clear()
 
         # Reset the score
-        PLayer2 = 0
+        Player2 = 0
 
         # Reset the delay
         delay = 0.1
