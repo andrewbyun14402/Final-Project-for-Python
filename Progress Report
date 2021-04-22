@@ -22,7 +22,8 @@ We were able to make the screen, the shnake, food 1 & 2, keyboard controls, upda
 
 #### What have you not done for your project yet?
 
-CPU Shnake
+Extra Shnkae
 
 #### What problems, if any, have you encountered?
-Loading pygame has been a problem for some of my partners so we are using just turtles instead.
+Loading pygame has been a problem for some of my partners so we are using just turtles instead. 
+Our group struggled to make the CPU shnake move randomly so we have decided to make it two players user controlled for both.
