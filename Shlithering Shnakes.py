@@ -23,8 +23,14 @@ shnake.penup()
 shnake.goto(0,0)
 shnake.direction="stop"
 
-#CPU Shnake 
-
+# shnake2
+shnake2 = turtle.Turtle()
+shnake2.speed(0)
+shnake2.shape("circle")
+shnake2.color("yellow")
+shnake2.penup()
+shnake2.goto(0, 0)
+shnake2.direction = "stop"
 
 #Food 1
 food1=turtle.Turtle()
@@ -54,7 +60,7 @@ pen.hideturtle()
 pen.goto(0, 260)
 pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
-# Functions
+# Functions snake1
 def go_up():
     if shnake.direction != "down":
         shnake.direction = "up"
@@ -70,7 +76,26 @@ def go_left():
 def go_right():
     if shnake.direction != "left":
         shnake.direction = "right"
+#functions snake 2
+def go_up2():
+    if shnake2.direction != "down":
+        shnake2.direction = "up"
 
+
+def go_down2():
+    if shnake2.direction != "up":
+        shnake2.direction = "down"
+
+
+def go_left2():
+    if shnake2.direction != "right":
+        shnake2.direction = "left"
+
+
+def go_right2():
+    if shnake2.direction != "left":
+        shnake2.direction = "right"
+#snake 1
 def move():
     if shnake.direction == "up":
         y = shnake.ycor()
@@ -87,14 +112,36 @@ def move():
     if shnake.direction == "right":
         x = shnake.xcor()
         shnake.setx(x + 20)
+#snake 2        
+def move2():
+    if shnake2.direction == "up":
+        y = shnake2.ycor()
+        shnake2.sety(y + 20)
+
+    if shnake2.direction == "down":
+        y = shnake2.ycor()
+        shnake2.sety(y - 20)
+
+    if shnake2.direction == "left":
+        x = shnake2.xcor()
+        shnake2.setx(x - 20)
+
+    if shnake2.direction == "right":
+        x = shnake2.xcor()
+        shnake2.setx(x + 20)        
 
 # Keyboard
+#snake 1
 wn.listen()
 wn.onkeypress(go_up, "w")
 wn.onkeypress(go_down, "s")
 wn.onkeypress(go_left, "a")
 wn.onkeypress(go_right, "d")
-
+#snake 2
+shnake2.onkey(go_up2, "i")
+shnake2.onkey(go_down2, "k")
+shnake2.onkey(go_left2, "j")
+shnake2.onkey(go_right2, "l")
 #Score
 score=0
 high_score=0
