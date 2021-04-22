@@ -203,6 +203,25 @@ while True:
         y = random.randrange(-280,280,20)
         food1.goto(x,y)
         
+        # Add a segment
+        new_segment = turtle.Turtle()
+        new_segment.speed(0)
+        new_segment.shape("square")
+        new_segment.color("grey")
+        new_segment.penup()
+        segments.append(new_segment)
+
+        # Shorten the delay
+        delay -= 0.001
+
+        # Increase the score
+        Player1 += 10
+
+     
+        
+        pen.clear()
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
+        
     if shnake.distance(food2) < 20:
         x = random.randrange(-280,280,20)
         y = random.randrange(-280,280,20)
@@ -234,6 +253,25 @@ while True:
         x = random.randrange(-280,280,20)
         y = random.randrange(-280,280,20)
         food1.goto(x,y)
+        
+        # Add a segment
+        new_segment = turtle.Turtle()
+        new_segment.speed(0)
+        new_segment.shape("square")
+        new_segment.color("grey")
+        new_segment.penup()
+        segments2.append(new_segment)
+
+        # Shorten the delay
+        delay -= 0.001
+
+        # Increase the score
+        Player2 += 10
+
+        
+        
+        pen.clear()
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
         
     if shnake2.distance(food2) < 20:
         x = random.randrange(-280,280,20)
