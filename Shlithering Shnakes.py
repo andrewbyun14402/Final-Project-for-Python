@@ -14,23 +14,23 @@ wn.bgcolor("black")
 wn.setup(width=600,height=600)
 wn.tracer(0)
 
-#Shnake 
+#Shnake 1
 shnake=turtle.Turtle()
 shnake.speed(0)
 shnake.shape("square")
 shnake.color("green")
 shnake.penup()
-shnake.goto(0,0)
+shnake.goto(-100,0)
 shnake.direction="stop"
 
-# shnake2
-shnake2 = turtle.Turtle()
+#Shnake 2
+shnake2=turtle.Turtle()
 shnake2.speed(0)
-shnake2.shape("circle")
-shnake2.color("yellow")
+shnake2.shape("square")
+shnake2.color("blue")
 shnake2.penup()
-shnake2.goto(0, 0)
-shnake2.direction = "stop"
+shnake2.goto(100,0)
+shnake2.direction="stop"
 
 #Food 1
 food1=turtle.Turtle()
@@ -44,11 +44,12 @@ food1.goto(0,100)
 food2=turtle.Turtle()
 food2.speed(0)
 food2.shape("square")
-food2.color("blue")
+food2.color("white")
 food2.penup()
 food2.goto(200,50)
 
-segments = []
+segments=[]
+segments2=[]
 
 # Pen
 pen = turtle.Turtle()
@@ -60,7 +61,7 @@ pen.hideturtle()
 pen.goto(0, 260)
 pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
-# Functions snake1
+# Functions for Shnake 1
 def go_up():
     if shnake.direction != "down":
         shnake.direction = "up"
@@ -76,26 +77,7 @@ def go_left():
 def go_right():
     if shnake.direction != "left":
         shnake.direction = "right"
-#functions snake 2
-def go_up2():
-    if shnake2.direction != "down":
-        shnake2.direction = "up"
 
-
-def go_down2():
-    if shnake2.direction != "up":
-        shnake2.direction = "down"
-
-
-def go_left2():
-    if shnake2.direction != "right":
-        shnake2.direction = "left"
-
-
-def go_right2():
-    if shnake2.direction != "left":
-        shnake2.direction = "right"
-#snake 1
 def move():
     if shnake.direction == "up":
         y = shnake.ycor()
@@ -112,7 +94,24 @@ def move():
     if shnake.direction == "right":
         x = shnake.xcor()
         shnake.setx(x + 20)
-#snake 2        
+
+# Functions for Shnake 2
+def go_up2():
+    if shnake2.direction != "down":
+        shnake2.direction = "up"
+
+def go_down2():
+    if shnake2.direction != "up":
+        shnake2.direction = "down"
+
+def go_left2():
+    if shnake2.direction != "right":
+        shnake2.direction = "left"
+
+def go_right2():
+    if shnake2.direction != "left":
+        shnake2.direction = "right"
+
 def move2():
     if shnake2.direction == "up":
         y = shnake2.ycor()
@@ -128,20 +127,22 @@ def move2():
 
     if shnake2.direction == "right":
         x = shnake2.xcor()
-        shnake2.setx(x + 20)        
+        shnake2.setx(x + 20)
 
-# Keyboard
-#snake 1
+
+# Keyboard bindings for Shnake 1
 wn.listen()
 wn.onkeypress(go_up, "w")
 wn.onkeypress(go_down, "s")
 wn.onkeypress(go_left, "a")
 wn.onkeypress(go_right, "d")
-#snake 2
-shnake2.onkey(go_up2, "i")
-shnake2.onkey(go_down2, "k")
-shnake2.onkey(go_left2, "j")
-shnake2.onkey(go_right2, "l")
+
+# Keyboard bindings for Shnake 2
+wn.onkeypress(go_up2, "i")
+wn.onkeypress(go_down2, "k")
+wn.onkeypress(go_left2, "j")
+wn.onkeypress(go_right2, "l")
+
 #Score
 score=0
 high_score=0
@@ -150,10 +151,10 @@ high_score=0
 while True:
     wn.update()
 
-    # Check for a collision with the border
+    # Check for a collision with the border (Shnake 1)
     if shnake.xcor()>290 or shnake.xcor()<-290 or shnake.ycor()>290 or shnake.ycor()<-290:
         time.sleep(1)
-        shnake.goto(0,0)
+        shnake.goto(-100,0)
         shnake.direction = "stop"
 
         # Hide the segments
@@ -172,37 +173,41 @@ while True:
         pen.clear()
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
-    # Check for a collision with the food 1
+# Check for a collision with the border (Shnake 2)
+    if shnake2.xcor()>290 or shnake2.xcor()<-290 or shnake2.ycor()>290 or shnake2.ycor()<-290:
+        time.sleep(1)
+        shnake2.goto(100,0)
+        shnake2.direction = "stop"
+
+        # Hide the segments
+        for segment in segments2:
+            segment.goto(1000, 1000)
+        
+        # Clear the segments list
+        segments2.clear()
+
+        # Reset the score
+        score = 0
+
+        # Reset the delay
+        delay = 0.1
+
+        pen.clear()
+        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+
+
+    # Check for a collision with the food (Shnake 1)
     if shnake.distance(food1) < 20:
-        # Move the food 1 to a random spot
+        # Move the food to a random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
         food1.goto(x,y)
-     # Add a segment
-        new_segment = turtle.Turtle()
-        new_segment.speed(0)
-        new_segment.shape("square")
-        new_segment.color("grey")
-        new_segment.penup()
-        segments.append(new_segment)
-
-        # Shorten the delay
-        delay -= 0.001
-
-        # Increase the score
-        score += 10
-
-        if score > high_score:
-            high_score = score
         
-        pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
-    # Check for a collision with the food 2
     if shnake.distance(food2) < 20:
-        # Move the food 2 to a random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
         food2.goto(x,y)
+        
         
         # Add a segment
         new_segment = turtle.Turtle()
@@ -224,25 +229,71 @@ while True:
         pen.clear()
         pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
-    # Move the end segments first in reverse order
+ # Check for a collision with the food (Shnake 2)
+    if shnake2.distance(food1) < 20:
+        # Move the food to a random spot
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        food1.goto(x,y)
+        
+    if shnake2.distance(food2) < 20:
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        food2.goto(x,y)
+        
+        
+        # Add a segment
+        new_segment = turtle.Turtle()
+        new_segment.speed(0)
+        new_segment.shape("square")
+        new_segment.color("grey")
+        new_segment.penup()
+        segments2.append(new_segment)
+
+        # Shorten the delay
+        delay -= 0.001
+
+        # Increase the score
+        score += 10
+
+        if score > high_score:
+            high_score = score
+        
+        pen.clear()
+        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+
+    # Move the end segments first in reverse order (Shnake 1)
     for index in range(len(segments)-1, 0, -1):
         x = segments[index-1].xcor()
         y = segments[index-1].ycor()
         segments[index].goto(x, y)
 
-    # Move segment 0 to where the head is
+    # Move the end segments first in reverse order (Shnake 2)
+    for index in range(len(segments2)-1, 0, -1):
+        x = segments2[index-1].xcor()
+        y = segments2[index-1].ycor()
+        segments2[index].goto(x, y)
+
+    # Move segment 0 to where Shnake 1 is
     if len(segments) > 0:
         x = shnake.xcor()
         y = shnake.ycor()
         segments[0].goto(x,y)
 
-    move()    
+    # Move segment 0 to where Shnake 2 is
+    if len(segments2) > 0:
+        x = shnake2.xcor()
+        y = shnake2.ycor()
+        segments2[0].goto(x,y)
 
-    # Check for shnake collision with the body segments
+    move()
+    move2()
+
+    # Check for shnake 1 collision with the body segments
     for segment in segments:
         if segment.distance(shnake) < 20:
             time.sleep(1)
-            shnake.goto(0,0)
+            shnake.goto(-100,0)
             shnake.direction = "stop"
         
             # Hide the segments
@@ -262,6 +313,29 @@ while True:
             pen.clear()
             pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
+    # Check for shnake 2 collision with the body segments
+    for segment in segments2:
+        if segment.distance(shnake) < 20:
+            time.sleep(1)
+            shnake2.goto(100,0)
+            shnake2.direction = "stop"
+        
+            # Hide the segments
+            for segment in segments2:
+                segment.goto(1000, 1000)
+        
+            # Clear the segments list
+            segments2.clear()
+
+            # Reset the score
+            score = 0
+
+            # Reset the delay
+            delay = 0.1
+        
+            # Update the score display
+            pen.clear()
+            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
     time.sleep(delay)
 
 wn.mainloop()
