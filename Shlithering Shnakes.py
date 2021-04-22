@@ -59,7 +59,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
+pen.write("Player1: 0  Player2: 0", align="center", font=("Courier", 24, "normal"))
 
 # Functions for Shnake 1
 def go_up():
@@ -144,8 +144,8 @@ wn.onkeypress(go_left2, "j")
 wn.onkeypress(go_right2, "l")
 
 #Score
-score=0
-high_score=0
+Player1=0
+Player2=0
 
 # Main game loop
 while True:
@@ -165,13 +165,13 @@ while True:
         segments.clear()
 
         # Reset the score
-        score = 0
+        Player1 = 0
 
         # Reset the delay
         delay = 0.1
 
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
 
 # Check for a collision with the border (Shnake 2)
     if shnake2.xcor()>290 or shnake2.xcor()<-290 or shnake2.ycor()>290 or shnake2.ycor()<-290:
@@ -187,13 +187,13 @@ while True:
         segments2.clear()
 
         # Reset the score
-        score = 0
+        PLayer2 = 0
 
         # Reset the delay
         delay = 0.1
 
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
 
 
     # Check for a collision with the food (Shnake 1)
@@ -221,13 +221,12 @@ while True:
         delay -= 0.001
 
         # Increase the score
-        score += 10
+        Player1 += 10
 
-        if score > high_score:
-            high_score = score
+     
         
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
 
  # Check for a collision with the food (Shnake 2)
     if shnake2.distance(food1) < 20:
@@ -254,13 +253,12 @@ while True:
         delay -= 0.001
 
         # Increase the score
-        score += 10
+        Player2 += 10
 
-        if score > high_score:
-            high_score = score
+        
         
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+        pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal")) 
 
     # Move the end segments first in reverse order (Shnake 1)
     for index in range(len(segments)-1, 0, -1):
@@ -304,14 +302,14 @@ while True:
             segments.clear()
 
             # Reset the score
-            score = 0
+            Player1 = 0
 
             # Reset the delay
             delay = 0.1
         
             # Update the score display
             pen.clear()
-            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+            pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal"))
 
     # Check for shnake 2 collision with the body segments
     for segment in segments2:
@@ -328,14 +326,14 @@ while True:
             segments2.clear()
 
             # Reset the score
-            score = 0
+            Player2 = 0
 
             # Reset the delay
             delay = 0.1
         
             # Update the score display
             pen.clear()
-            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+            pen.write("Player1: {}  Player2: {}".format(Player1, Player2), align="center", font=("Courier", 24, "normal"))
     time.sleep(delay)
 
 wn.mainloop()
