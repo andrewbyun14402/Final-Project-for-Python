@@ -14,7 +14,7 @@ wn.bgcolor("black")
 wn.setup(width=600,height=600)
 wn.tracer(0)
 
-#Shnake
+#Shnake 
 shnake=turtle.Turtle()
 shnake.speed(0)
 shnake.shape("square")
@@ -22,6 +22,9 @@ shnake.color("green")
 shnake.penup()
 shnake.goto(0,0)
 shnake.direction="stop"
+
+#CPU Shnake 
+
 
 #Food 1
 food1=turtle.Turtle()
@@ -85,7 +88,7 @@ def move():
         x = shnake.xcor()
         shnake.setx(x + 20)
 
-# Keyboard bindings
+# Keyboard
 wn.listen()
 wn.onkeypress(go_up, "w")
 wn.onkeypress(go_down, "s")
