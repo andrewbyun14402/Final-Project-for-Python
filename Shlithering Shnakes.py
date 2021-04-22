@@ -199,13 +199,13 @@ while True:
     # Check for a collision with the food (Shnake 1)
     if shnake.distance(food1) < 20:
         # Move the food to a random spot
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
+        x = random.randrange(-280,280,20)
+        y = random.randrange(-280,280,20)
         food1.goto(x,y)
         
     if shnake.distance(food2) < 20:
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
+        x = random.randrange(-280,280,20)
+        y = random.randrange(-280,280,20)
         food2.goto(x,y)
         
         
@@ -232,13 +232,13 @@ while True:
  # Check for a collision with the food (Shnake 2)
     if shnake2.distance(food1) < 20:
         # Move the food to a random spot
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
+        x = random.randrange(-280,280,20)
+        y = random.randrange(-280,280,20)
         food1.goto(x,y)
         
     if shnake2.distance(food2) < 20:
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
+        x = random.randrange(-280,280,20)
+        y = random.randrange(-280,280,20)
         food2.goto(x,y)
         
         
