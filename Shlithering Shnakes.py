@@ -35,7 +35,7 @@ shnake2.direction="stop"
 #Food 1
 food1=turtle.Turtle()
 food1.speed(0)
-food1.shape("square")
+food1.shape("circle")
 food1.color("red")
 food1.penup()
 food1.goto(0,100)
@@ -43,7 +43,7 @@ food1.goto(0,100)
 #Food 2
 food2=turtle.Turtle()
 food2.speed(0)
-food2.shape("square")
+food2.shape("circle")
 food2.color("white")
 food2.penup()
 food2.goto(200,50)
