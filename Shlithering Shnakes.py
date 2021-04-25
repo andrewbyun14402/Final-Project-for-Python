@@ -376,3 +376,5 @@ while True:
     time.sleep(delay)
 
 wn.mainloop()
+
+Reference:TokyoEdtech Youtube
