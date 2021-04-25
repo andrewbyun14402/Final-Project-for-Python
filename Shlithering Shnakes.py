@@ -1,5 +1,6 @@
 #Shlithering Shnakes
 #By Andrew Byun, Lang Li, Vraj Patel
+#Class of 2024
 import turtle
 
 import time 
