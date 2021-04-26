@@ -377,4 +377,3 @@ while True:
 
 wn.mainloop()
 
-Reference:TokyoEdtech Youtube
